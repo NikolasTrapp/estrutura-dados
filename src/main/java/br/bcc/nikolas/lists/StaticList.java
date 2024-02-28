@@ -73,7 +73,7 @@ public class StaticList {
             return false;
         }
 
-        for (int i = index; i < getSize() - 1; i++) {
+        for (int i = index; i < getSize(); i++) {
             if (i == size) {
                 numbers[i] = 0;
             } else {
