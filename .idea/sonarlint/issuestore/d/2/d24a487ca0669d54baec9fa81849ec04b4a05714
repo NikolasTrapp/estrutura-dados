@@ -1,0 +1,13 @@
+
+m	java:S1175"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶û½ü8îÛÇèŞ1
+u
+java:S1104	"SMake numbers a static final constant or non-public and provide accessors if needed.(ãôªÿÿÿÿÿ8ïÛÇèŞ1
+f
+java:S1134	"DTake the required action to fix the issue indicated by this comment.(ãôªÿÿÿÿÿ8…ÜÇèŞ1
+O
+java:S1135"2Complete the task associated to this TODO comment.(ÙÅ·Á8…ÜÇèŞ1
+G	java:S106."+Replace this use of System.out by a logger.(îš¸”8‡ÜÇèŞ1
+L	java:S1060"+Replace this use of System.out by a logger.(·ùßóıÿÿÿÿ8ˆÜÇèŞ1
+G	java:S1062"+Replace this use of System.out by a logger.(îš¸”8ˆÜÇèŞ1
+O
+java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ8ôŞüèŞ1
