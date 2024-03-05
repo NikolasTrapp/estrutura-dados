@@ -13,21 +13,21 @@ class GenericStaticListTests {
     @Test
     @DisplayName("Testar método de inclusão de dados na lista")
     void testAdd_01() {
-        GenericStaticList list = new GenericStaticList();
+        GenericStaticList<Integer> list = new GenericStaticList<>();
 
         list.add(5);
-        list.add("10");
-        list.add(15.4);
+        list.add(10);
+        list.add(15);
         list.add(20);
 
         assertThat(list.getSize()).isEqualTo(4);
-        assertThat(list.toString()).hasToString("5,10,15.4,20");
+        assertThat(list.toString()).hasToString("5,10,15,20");
     }
 
     @Test
     @DisplayName("Testar método de busca")
     void testFind_01() {
-        GenericStaticList list = new GenericStaticList();
+        GenericStaticList<Integer> list = new GenericStaticList<>();
 
         list.add(5);
         list.add(10);
@@ -41,7 +41,7 @@ class GenericStaticListTests {
     @Test
     @DisplayName("Testar método de remoção")
     void testRemove_01() {
-        GenericStaticList list = new GenericStaticList();
+        GenericStaticList<Integer> list = new GenericStaticList<>();
 
         list.add(5);
         list.add(10);
@@ -56,7 +56,7 @@ class GenericStaticListTests {
     @Test
     @DisplayName("Testar método de remoção de um elemento inexistente")
     void testRemove_02() {
-        GenericStaticList list = new GenericStaticList();
+        GenericStaticList<Integer> list = new GenericStaticList<>();
 
         list.add(5);
         list.add(10);
@@ -71,7 +71,7 @@ class GenericStaticListTests {
     @Test
     @DisplayName("Testar método de inclusão de dados na lista, testando redimencionamento.")
     void testAdd_02() {
-        GenericStaticList list = new GenericStaticList();
+        GenericStaticList<Integer> list = new GenericStaticList<>();
 
         for (int i = 1; i <= 15; i++) {
             list.add(i);
@@ -83,22 +83,22 @@ class GenericStaticListTests {
 
     @Test
     @DisplayName("Testar método de obter elemento")
-    void testGetNumber_01() {
-        GenericStaticList list = new GenericStaticList();
+    void testGetObject_01() {
+        GenericStaticList<Integer> list = new GenericStaticList<>();
 
         list.add(5);
         list.add(10);
         list.add(15);
         list.add(20);
 
-        assertThat(list.getNumber(3)).isEqualTo(20);
+        assertThat(list.getObject(3)).isEqualTo(20);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {5, -1})
     @DisplayName("Erro, testar método de obter elemento, exceção")
-    void testGetNumber_02(int n) {
-        GenericStaticList list = new GenericStaticList();
+    void testGetObject_02(int n) {
+        GenericStaticList<Integer> list = new GenericStaticList<>();
 
         list.add(5);
         list.add(10);
@@ -106,14 +106,14 @@ class GenericStaticListTests {
         list.add(20);
 
         assertThatExceptionOfType(IndexOutOfBoundsException.class)
-                .isThrownBy(() -> list.getNumber(n))
+                .isThrownBy(() -> list.getObject(n))
                 .withMessage("Chapou linguiça");
     }
 
     @Test
     @DisplayName("Testa limpar a lista.")
     void testFree_01() {
-        GenericStaticList list = new GenericStaticList();
+        GenericStaticList<Integer> list = new GenericStaticList<>();
 
         list.add(5);
         list.add(10);
