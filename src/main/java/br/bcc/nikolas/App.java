@@ -5,7 +5,7 @@ import br.bcc.nikolas.lists.StaticList;
 public class App {
 
     public static void main(String[] args) {
-        StaticList lista = new StaticList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        StaticList lista = new StaticList();
 
         lista.add(1);
         lista.add(2);
@@ -22,6 +22,5 @@ public class App {
         lista.printNumbers();
         System.out.println(lista);
         System.out.println("--=-==-=-=-==-=-=");
-        System.out.println(lista.numbers.length);
     }
 }

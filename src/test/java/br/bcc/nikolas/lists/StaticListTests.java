@@ -19,7 +19,7 @@ class StaticListTests {
         list.add(20);
 
         assertThat(list.getSize()).isEqualTo(4);
-        assertThat(list.toString()).isEqualTo("5,10,15,20");
+        assertThat(list.toString()).hasToString("5,10,15,20");
     }
 
     @Test
@@ -47,7 +47,7 @@ class StaticListTests {
         list.add(20);
 
         assertThat(list.remove(10)).isTrue();
-        assertThat(list.toString()).isEqualTo("5,15,20");
+        assertThat(list.toString()).hasToString("5,15,20");
         assertThat(list.getSize()).isEqualTo(3);
     }
 
@@ -62,7 +62,7 @@ class StaticListTests {
         list.add(20);
 
         assertThat(list.remove(90)).isFalse();
-        assertThat(list.toString()).isEqualTo("5,10,15,20");
+        assertThat(list.toString()).hasToString("5,10,15,20");
         assertThat(list.getSize()).isEqualTo(4);
     }
 
@@ -76,7 +76,7 @@ class StaticListTests {
         }
 
         assertThat(list.getSize()).isEqualTo(15);
-        assertThat(list.toString()).isEqualTo("1,2,3,4,5,6,7,8,9,10,11,12,13,14,15");
+        assertThat(list.toString()).hasToString("1,2,3,4,5,6,7,8,9,10,11,12,13,14,15");
     }
 
     @Test
@@ -104,7 +104,7 @@ class StaticListTests {
 
         assertThatExceptionOfType(IndexOutOfBoundsException.class)
                 .isThrownBy(() -> list.getNumber(5))
-                .withMessage("Chapou linguça");
+                .withMessage("Chapou linguiça");
     }
 
     @Test

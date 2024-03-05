@@ -1,35 +1,22 @@
 package br.bcc.nikolas.lists;
 
-import java.util.Arrays;
-
 public class StaticList {
 
     private static final int PART_SIZE = 10;
     private int size = 0;
-    public int[] numbers; //FIXME PUBLIC
+    private int[] numbers;
 
     /**
-     * Starts a new list with initial 10 spaces.
+     * Starts a new list with initial {@value PART_SIZE} size.
      */
     public StaticList() {
-        this.numbers = new int[10];
+        this.numbers = new int[PART_SIZE];
     }
-
-    /**
-     * TODO remove/ Starts a new list with initial 10 spaces.
-     */
-    public StaticList(int ...objects) {
-        this.numbers = objects;
-        this.size = objects.length;
-    }
-
 
     private void resize() {
         int[] tempNumbers = new int[size + PART_SIZE];
-        int cont = 0;
-        for (int x : this.numbers) {
-            tempNumbers[cont] = x;
-            cont++;
+        for (int i = 0; i < getSize(); i++) {
+            tempNumbers[i] = numbers[i];
         }
         this.numbers = tempNumbers;
     }
@@ -50,19 +37,19 @@ public class StaticList {
         System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=");
     }
 
-    public int find(int N) {
+    public int find(int number) {
         for (int i = 0; i < getSize(); i++) {
-            if (numbers[i] == N) {
+            if (numbers[i] == number) {
                 return i;
             }
         }
         return -1;
     }
 
-    public boolean remove(int n) {
+    public boolean remove(int number) {
         int index = -1;
         for (int i = 0; i < getSize(); i++) {
-            if (numbers[i] == n) {
+            if (numbers[i] == number) {
                 index = i;
                 this.size--;
                 break;
@@ -84,20 +71,20 @@ public class StaticList {
     }
 
     public void free() {
-        this.numbers = new int[10];
+        this.numbers = new int[PART_SIZE];
         this.size = 0;
     }
 
     public int getNumber(int index) {
-        if (index > size) {
-            throw new IndexOutOfBoundsException("Chapou linguça");
+        if (index > getSize()) {
+            throw new IndexOutOfBoundsException("Chapou linguiça");
         }
 
         return numbers[index];
     }
 
     public boolean isEmpty() {
-        return size == 0;
+        return getSize() == 0;
     }
 
     public int getSize() {
