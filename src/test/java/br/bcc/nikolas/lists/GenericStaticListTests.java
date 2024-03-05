@@ -8,26 +8,26 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-class StaticListTests {
+class GenericStaticListTests {
 
     @Test
     @DisplayName("Testar método de inclusão de dados na lista")
     void testAdd_01() {
-        StaticList list = new StaticList();
+        GenericStaticList list = new GenericStaticList();
 
         list.add(5);
-        list.add(10);
-        list.add(15);
+        list.add("10");
+        list.add(15.4);
         list.add(20);
 
         assertThat(list.getSize()).isEqualTo(4);
-        assertThat(list.toString()).hasToString("5,10,15,20");
+        assertThat(list.toString()).hasToString("5,10,15.4,20");
     }
 
     @Test
     @DisplayName("Testar método de busca")
     void testFind_01() {
-        StaticList list = new StaticList();
+        GenericStaticList list = new GenericStaticList();
 
         list.add(5);
         list.add(10);
@@ -41,7 +41,7 @@ class StaticListTests {
     @Test
     @DisplayName("Testar método de remoção")
     void testRemove_01() {
-        StaticList list = new StaticList();
+        GenericStaticList list = new GenericStaticList();
 
         list.add(5);
         list.add(10);
@@ -56,7 +56,7 @@ class StaticListTests {
     @Test
     @DisplayName("Testar método de remoção de um elemento inexistente")
     void testRemove_02() {
-        StaticList list = new StaticList();
+        GenericStaticList list = new GenericStaticList();
 
         list.add(5);
         list.add(10);
@@ -71,7 +71,7 @@ class StaticListTests {
     @Test
     @DisplayName("Testar método de inclusão de dados na lista, testando redimencionamento.")
     void testAdd_02() {
-        StaticList list = new StaticList();
+        GenericStaticList list = new GenericStaticList();
 
         for (int i = 1; i <= 15; i++) {
             list.add(i);
@@ -84,7 +84,7 @@ class StaticListTests {
     @Test
     @DisplayName("Testar método de obter elemento")
     void testGetNumber_01() {
-        StaticList list = new StaticList();
+        GenericStaticList list = new GenericStaticList();
 
         list.add(5);
         list.add(10);
@@ -98,7 +98,7 @@ class StaticListTests {
     @ValueSource(ints = {5, -1})
     @DisplayName("Erro, testar método de obter elemento, exceção")
     void testGetNumber_02(int n) {
-        StaticList list = new StaticList();
+        GenericStaticList list = new GenericStaticList();
 
         list.add(5);
         list.add(10);
@@ -113,7 +113,7 @@ class StaticListTests {
     @Test
     @DisplayName("Testa limpar a lista.")
     void testFree_01() {
-        StaticList list = new StaticList();
+        GenericStaticList list = new GenericStaticList();
 
         list.add(5);
         list.add(10);

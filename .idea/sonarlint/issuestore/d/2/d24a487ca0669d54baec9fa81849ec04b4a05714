@@ -1,6 +1,0 @@
-
-v
-java:S3012"YUse "Arrays.copyOf", "Arrays.asList", "Collections.addAll" or "System.arraycopy" instead.(Η·8½—Π„α1
-G	java:S106!"+Replace this use of System.out by a logger.(ξΈ”8»±Ο„α1
-L	java:S106#"+Replace this use of System.out by a logger.(·ωίσύÿÿÿÿ8Ό±Ο„α1
-G	java:S106%"+Replace this use of System.out by a logger.(ξΈ”8Ό±Ο„α1

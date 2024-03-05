@@ -1,27 +1,27 @@
 package br.bcc.nikolas.lists;
 
-public class StaticList {
+public class GenericStaticList {
 
     private static final int PART_SIZE = 10;
     private int size = 0;
-    private int[] numbers;
+    private Object[] numbers;
 
     /**
      * Starts a new list with initial {@value PART_SIZE} size.
      */
-    public StaticList() {
-        this.numbers = new int[PART_SIZE];
+    public GenericStaticList() {
+        this.numbers = new Object[PART_SIZE];
     }
 
     private void resize() {
-        int[] tempNumbers = new int[size + PART_SIZE];
+        Object[] tempNumbers = new Object[size + PART_SIZE];
         for (int i = 0; i < getSize(); i++) {
             tempNumbers[i] = numbers[i];
         }
         this.numbers = tempNumbers;
     }
 
-    public void add(int number) {
+    public void add(Object number) {
         if (this.numbers.length == size) {
             resize();
         }
@@ -29,15 +29,15 @@ public class StaticList {
         this.size++;
     }
 
-    public void printNumbers() {
+    public void prObjectNumbers() {
         System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=");
-        for (int number : numbers) {
+        for (Object number : numbers) {
             System.out.println(number);
         }
         System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=");
     }
 
-    public int find(int number) {
+    public int find(Object number) {
         for (int i = 0; i < getSize(); i++) {
             if (numbers[i] == number) {
                 return i;
@@ -46,7 +46,7 @@ public class StaticList {
         return -1;
     }
 
-    public boolean remove(int number) {
+    public boolean remove(Object number) {
         int index = find(number);
 
         if (index == -1) {
@@ -65,11 +65,11 @@ public class StaticList {
     }
 
     public void free() {
-        this.numbers = new int[PART_SIZE];
+        this.numbers = new Object[PART_SIZE];
         this.size = 0;
     }
 
-    public int getNumber(int index) {
+    public Object getNumber(int index) {
         if (index > getSize() || index < 0) {
             throw new IndexOutOfBoundsException("Chapou linguiça");
         }
