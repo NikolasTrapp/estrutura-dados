@@ -1,5 +1,7 @@
 package br.bcc.nikolas.lists;
 
+import static java.util.Objects.isNull;
+
 public class GenericStaticList <T> {
 
     private static final int PART_SIZE = 10;
@@ -38,8 +40,11 @@ public class GenericStaticList <T> {
     }
 
     public int find(T object) {
+        if (isNull(object)) {
+            throw new NullPointerException("Chapou linguiça");
+        }
         for (int i = 0; i < getSize(); i++) {
-            if (objects[i] == object) {
+            if (object.equals(objects[i])) {
                 return i;
             }
         }

@@ -39,6 +39,16 @@ class GenericStaticListTests {
     }
 
     @Test
+    @DisplayName("Testar método de busca, causando npe")
+    void testFind_02() {
+        GenericStaticList<String> list = new GenericStaticList<>();
+
+        assertThatExceptionOfType(NullPointerException.class)
+                .isThrownBy(() -> list.find(null))
+                .withMessage("Chapou linguiça");
+    }
+
+    @Test
     @DisplayName("Testar método de remoção")
     void testRemove_01() {
         GenericStaticList<Integer> list = new GenericStaticList<>();
@@ -66,6 +76,18 @@ class GenericStaticListTests {
         assertThat(list.remove(90)).isFalse();
         assertThat(list.toString()).hasToString("5,10,15,20");
         assertThat(list.getSize()).isEqualTo(4);
+    }
+
+    @Test
+    void testRemove_03() {
+        GenericStaticList<Integer> list = new GenericStaticList<>();
+
+        for (int i = 0; i < 11; i++) {
+            list.add(i);
+        }
+
+        assertThat(list.remove(1)).isTrue();
+        assertThat(list.getSize()).isEqualTo(10);
     }
 
     @Test
