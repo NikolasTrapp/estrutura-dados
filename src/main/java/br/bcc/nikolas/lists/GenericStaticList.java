@@ -5,6 +5,7 @@ import static java.util.Objects.isNull;
 public class GenericStaticList <T> {
 
     private static final int PART_SIZE = 10;
+    private static final Integer ZERO = 0;
     private int size = 0;
     private Object[] objects;
 
@@ -60,7 +61,7 @@ public class GenericStaticList <T> {
 
         for (int i = index; i < getSize(); i++) {
             if (i == size) {
-                objects[i] = 0;
+                objects[i] = null;
             } else {
                 objects[i] = objects[i + 1];
             }
@@ -71,7 +72,7 @@ public class GenericStaticList <T> {
 
     public void free() {
         this.objects = new Object[PART_SIZE];
-        this.size = 0;
+        this.size = ZERO;
     }
 
     public T getObject(int index) {
@@ -83,7 +84,7 @@ public class GenericStaticList <T> {
     }
 
     public boolean isEmpty() {
-        return getSize() == 0;
+        return ZERO.equals(getSize());
     }
 
     public int getSize() {
@@ -94,11 +95,26 @@ public class GenericStaticList <T> {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < getSize(); i++) {
-            sb.append(objects[i]);
+            sb.append(objects[i].toString());
             if (i < getSize() - 1) {
                 sb.append(",");
             }
         }
         return sb.toString();
+    }
+
+    public void invert() {
+        if (getSize() <= 0) {
+            throw new IllegalStateException("Ta chapando?");
+        }
+
+        int s = (getSize() - 1) / 2;
+
+        for (int i = 0; i <= s; i++) {
+            int opposite = getSize() - 1 - i;
+            Object temp = this.objects[i];
+            this.objects[i] = this.objects[opposite];
+            this.objects[opposite] = temp;
+        }
     }
 }

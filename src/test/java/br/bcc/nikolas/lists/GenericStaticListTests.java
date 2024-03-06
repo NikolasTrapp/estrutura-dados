@@ -147,4 +147,36 @@ class GenericStaticListTests {
         assertThat(list.getSize()).isZero();
         assertThat(list.isEmpty()).isTrue();
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {10, 11})
+    @DisplayName("Testa a inversão da lista, testa com caso impar e par")
+    void testInversion_01(int x) {
+        GenericStaticList<Integer> list = new GenericStaticList<>();
+        String expected = "";
+
+        for (int i = 1; i <= x; i++) {
+            list.add(i);
+        }
+
+        for (int i = x; i > 0; i--) {
+            expected += i + ",";
+        }
+
+        expected = expected.substring(0, expected.length() - 1);
+
+        list.invert();
+
+        assertThat(list.toString()).hasToString(expected);
+    }
+
+    @Test
+    @DisplayName("Testa inversão com lista vazia")
+    void testInversion_02() {
+        GenericStaticList<?> list = new GenericStaticList<>();
+
+        assertThatExceptionOfType(IllegalStateException.class)
+                .isThrownBy(list::invert)
+                .withMessage("Ta chapando?");
+    }
 }

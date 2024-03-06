@@ -85,6 +85,21 @@ public class StaticList {
         return size;
     }
 
+    public void invert() {
+        if (getSize() <= 0) {
+            throw new IllegalStateException("Ta chapando?");
+        }
+
+        int s = (getSize() - 1) / 2;
+
+        for (int i = 0; i <= s; i++) {
+            int opposite = getSize() - 1 - i;
+            int temp = this.numbers[i];
+            this.numbers[i] = this.numbers[opposite];
+            this.numbers[opposite] = temp;
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
