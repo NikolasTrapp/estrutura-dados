@@ -1,7 +1,5 @@
 package br.bcc.nikolas.listasencadeadas;
 
-import java.util.Objects;
-
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 

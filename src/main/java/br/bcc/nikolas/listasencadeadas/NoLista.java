@@ -1,5 +1,7 @@
 package br.bcc.nikolas.listasencadeadas;
 
+import java.util.Objects;
+
 public class NoLista <T> {
 
     private NoLista<T> proximo;
@@ -28,5 +30,18 @@ public class NoLista <T> {
     @Override
     public String toString() {
         return info.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        NoLista<?> noLista = (NoLista<?>) o;
+        return Objects.equals(info, noLista.info);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(info);
     }
 }
