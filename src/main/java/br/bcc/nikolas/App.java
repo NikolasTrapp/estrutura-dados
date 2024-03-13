@@ -1,26 +1,19 @@
 package br.bcc.nikolas;
 
+import br.bcc.nikolas.listasencadeadas.ListaEncadeada;
 import br.bcc.nikolas.lists.ListaEstatica;
 
 public class App {
 
     public static void main(String[] args) {
-        ListaEstatica lista = new ListaEstatica();
+        ListaEncadeada<Integer> l = new ListaEncadeada<>();
 
-        lista.inserir(1);
-        lista.inserir(2);
-        lista.inserir(3);
-        lista.inserir(4);
-        lista.inserir(5);
-        lista.inserir(6);
-        lista.inserir(7);
-        lista.inserir(8);
-        lista.inserir(9);
 
-        lista.retirar(3);
+        for (int i = 1; i <= 20; i++) {
+            l.inserir(i);
+        }
 
-        lista.exibir();
-        System.out.println(lista);
-        System.out.println("--=-==-=-=-==-=-=");
+        System.out.println(l.obterNo(0));
+        System.out.println(l.obterNo(19));
     }
 }
