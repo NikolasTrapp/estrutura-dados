@@ -198,6 +198,7 @@ class ListaEncadeadaTests {
     }
 
     @Test
+    @DisplayName("Testa obter comprimento")
     void testObterComprimento_01() {
         int tam = 5;
         ListaEncadeada<Integer> listaEncadeada = new ListaEncadeada<>();
@@ -210,9 +211,29 @@ class ListaEncadeadaTests {
     }
 
     @Test
+    @DisplayName("Testa obter comprimento, com lista vazia.")
     void testObterComprimento_02() {
         ListaEncadeada<Integer> listaEncadeada = new ListaEncadeada<>();
         assertThat(listaEncadeada.obterComprimento()).isZero();
+    }
+
+    @Test
+    @DisplayName("Testa toString() vazio")
+    void testToString_01() {
+        ListaEncadeada<Integer> listaEncadeada = new ListaEncadeada<>();
+        assertThat(listaEncadeada.toString()).isEmpty();
+    }
+
+    @Test
+    @DisplayName("Testa toString() vazio")
+    void testToString_02() {
+        ListaEncadeada<Integer> listaEncadeada = new ListaEncadeada<>();
+
+        listaEncadeada.inserir(1);
+        listaEncadeada.inserir(2);
+        listaEncadeada.inserir(3);
+
+        assertThat(listaEncadeada.toString()).hasToString("1,2,3");
     }
 
 
