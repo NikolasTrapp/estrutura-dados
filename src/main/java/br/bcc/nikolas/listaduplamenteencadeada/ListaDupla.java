@@ -3,7 +3,7 @@ package br.bcc.nikolas.listaduplamenteencadeada;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
-public class ListaDupla <T> {
+public class ListaDupla<T> {
 
     private NoListaDupla<T> primeiro;
 
@@ -19,7 +19,7 @@ public class ListaDupla <T> {
 
         novoNode.setProximo(primeiro);
 
-        if(nonNull(primeiro)) {
+        if (nonNull(primeiro)) {
             primeiro.setAnterior(novoNode);
         }
         primeiro = novoNode;
@@ -50,19 +50,13 @@ public class ListaDupla <T> {
         NoListaDupla<T> anterior = candidato.getAnterior();
         NoListaDupla<T> proximo = candidato.getProximo();
 
-        if (candidato.getInfo().equals(info)) {
+        if (primeiro == candidato) {
             primeiro = proximo;
-
-            if (nonNull(proximo)) {
-                proximo.setAnterior(null);
-            }
-            return;
         }
 
         if (nonNull(anterior)) {
             anterior.setProximo(proximo);
         }
-
         if (nonNull(proximo)) {
             proximo.setAnterior(anterior);
         }
@@ -84,21 +78,21 @@ public class ListaDupla <T> {
         return str;
     }
 
-        public void liberar() {
-            if (isNull(getPrimeiro())) {
-                return;
-            }
-            removerNode(getPrimeiro());
-            primeiro = null;
+    public void liberar() {
+        if (isNull(getPrimeiro())) {
+            return;
         }
+        removerNode(getPrimeiro());
+        primeiro = null;
+    }
 
-        private void removerNode(NoListaDupla<T> info) {
-            if (nonNull(info.getProximo())) {
-                removerNode(info.getProximo());
-            }
-            info.setAnterior(null);
-            info.setProximo(null);
+    private void removerNode(NoListaDupla<T> info) {
+        if (nonNull(info.getProximo())) {
+            removerNode(info.getProximo());
         }
+        info.setAnterior(null);
+        info.setProximo(null);
+    }
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -115,6 +109,6 @@ public class ListaDupla <T> {
             }
             no = no.getProximo();
         }
-        return sb.substring(0, sb.length()-1);
+        return sb.substring(0, sb.length() - 1);
     }
 }

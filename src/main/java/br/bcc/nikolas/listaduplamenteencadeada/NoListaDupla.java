@@ -8,6 +8,8 @@ public class NoListaDupla <T> {
     private NoListaDupla<T> anterior;
     private NoListaDupla<T> proximo;
 
+    public NoListaDupla(){}
+
     public NoListaDupla(T info) {
         this.info = info;
     }
