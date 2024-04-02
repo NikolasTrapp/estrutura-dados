@@ -102,6 +102,34 @@ public class ListaEncadeada <T> {
         return p;
     }
 
+    public void retirarTodos(T valor) {
+        if (getPrimeiro() == null) {
+            return;
+        }
+
+        NoLista<T> p = getPrimeiro();
+
+        if (p.getInfo().equals(valor)) {
+            while (p.getInfo().equals(valor)) {
+                p = p.getProximo();
+                if (p == null) {
+                    primeiro = null;
+                    return;
+                }
+            }
+            primeiro = p;
+        }
+
+        while (p != null) {
+            NoLista<T> prox = p.getProximo();
+            if (prox != null && prox.getInfo().equals(valor)) {
+                p.setProximo(prox.getProximo());
+            } else {
+                p = p.getProximo();
+            }
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();

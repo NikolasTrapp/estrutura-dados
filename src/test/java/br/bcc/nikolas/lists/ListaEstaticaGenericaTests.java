@@ -180,4 +180,24 @@ class ListaEstaticaGenericaTests {
                 .isThrownBy(list::inverter)
                 .withMessage("Ta chapando?");
     }
+
+    @Test
+    void testRetirarElementos() {
+        ListaEstaticaGenerica<Integer> list = new ListaEstaticaGenerica<>();
+
+        list.inserir(10);
+        list.inserir(20);
+        list.inserir(30);
+        list.inserir(40);
+        list.inserir(50);
+        list.inserir(60);
+        list.inserir(70);
+        list.inserir(80);
+
+
+        list.retirarElementos(2, 4);
+
+        assertThat(list).hasToString("10,20,60,70");
+        assertThat(list.getTamanho()).isEqualTo(4);
+    }
 }

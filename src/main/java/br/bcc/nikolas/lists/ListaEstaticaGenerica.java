@@ -1,6 +1,7 @@
 package br.bcc.nikolas.lists;
 
 import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
 
 public class ListaEstaticaGenerica<T> {
 
@@ -95,9 +96,11 @@ public class ListaEstaticaGenerica<T> {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < getTamanho(); i++) {
-            sb.append(info[i].toString());
-            if (i < getTamanho() - 1) {
-                sb.append(",");
+            if (nonNull(info[i])) {
+                sb.append(info[i].toString());
+                if (i < getTamanho() - 1) {
+                    sb.append(",");
+                }
             }
         }
         return sb.toString();
@@ -116,5 +119,22 @@ public class ListaEstaticaGenerica<T> {
             this.info[i] = this.info[opposite];
             this.info[opposite] = temp;
         }
+    }
+
+    public void retirarElementos(int inicio, int fim) {
+
+        int diferenca = fim - inicio + 1;
+
+        int count = 0;
+        while (count < diferenca) {
+            info[inicio + count] = info[fim + count + 1];
+            count++;
+        }
+
+        for (int i = fim + 1; i < tamanho; i++) {
+            info[i] = null;
+        }
+
+        tamanho -= (fim - inicio);
     }
 }

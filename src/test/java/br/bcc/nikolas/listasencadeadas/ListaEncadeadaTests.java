@@ -236,5 +236,21 @@ class ListaEncadeadaTests {
         assertThat(listaEncadeada.toString()).hasToString("1,2,3");
     }
 
+    @Test
+    void testAA() {
+        ListaEncadeada<Integer> l = new ListaEncadeada<>();
+
+        l.inserir(20);
+        l.inserir(20);
+        l.inserir(20);
+        l.inserir(20);
+        l.inserir(20);
+        l.inserir(10);
+        l.inserir(20);
+
+        l.retirarTodos(20);
+        System.out.println(l);
+    }
+
 
 }
