@@ -6,10 +6,8 @@ import static java.util.Objects.nonNull;
 public class ListaEncadeada <T> {
 
     private NoLista<T> primeiro;
+    private NoLista<T> ultimo;
 
-
-    public ListaEncadeada() {
-    }
 
     public NoLista<T> getPrimeiro() {
         return primeiro;
@@ -18,9 +16,11 @@ public class ListaEncadeada <T> {
     public void inserir(T info) {
         if (isNull(primeiro)) {
             this.primeiro = new NoLista<>(info);
+            this.ultimo = new NoLista<>(info);
             return;
         }
         adicionarNo(getPrimeiro(), info);
+        this.ultimo = new NoLista<>(info);
     }
 
     private void adicionarNo(NoLista<T> target, T info) {
@@ -128,6 +128,15 @@ public class ListaEncadeada <T> {
                 p = p.getProximo();
             }
         }
+    }
+
+    public void liberar() {
+        this.primeiro = null;
+        this.ultimo = null;
+    }
+
+    public NoLista<T> getUltimo() {
+        return ultimo;
     }
 
     @Override
