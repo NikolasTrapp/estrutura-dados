@@ -2,14 +2,14 @@ package br.bcc.nikolas.pilhas;
 
 public class PilhaVetor <T> implements Pilha <T> {
 
-    private Object[] info;
+    private T[] info;
     private final int limite;
     private int tamanho;
 
     public PilhaVetor(int limite) {
         this.limite = limite;
         this.tamanho = 0;
-        this.info = new Object[limite];
+        this.info = (T[]) new Object[limite];
     }
 
     @Override
@@ -26,10 +26,10 @@ public class PilhaVetor <T> implements Pilha <T> {
         if (estaVazia()) {
             throw new PilhaVaziaException("A pilha está vazia.");
         }
-        Object val = this.info[tamanho - 1];
+        T val = this.info[tamanho - 1];
         this.info[tamanho - 1] = null;
         tamanho--;
-        return (T) val;
+        return val;
     }
 
     @Override
@@ -38,7 +38,7 @@ public class PilhaVetor <T> implements Pilha <T> {
             throw new PilhaVaziaException("A pilha está vazia.");
         }
 
-        return (T) this.info[tamanho - 1];
+        return this.info[tamanho - 1];
     }
 
     @Override
@@ -48,9 +48,9 @@ public class PilhaVetor <T> implements Pilha <T> {
 
     @Override
     public void liberar() {
-        this.info = new Object[getLimite()];
+        this.info = (T[]) new Object[getLimite()];
 
-        Object val = pop();
+        T val = pop();
         while (val != null) {
             val = pop();
         }
