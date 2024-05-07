@@ -14,6 +14,7 @@ public class ListaEncadeada <T> {
     }
 
     public void inserir(T info) {
+
         if (isNull(primeiro)) {
             this.primeiro = new NoLista<>(info);
             this.ultimo = new NoLista<>(info);
